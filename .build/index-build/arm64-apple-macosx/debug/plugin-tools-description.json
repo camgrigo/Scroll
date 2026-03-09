@@ -1,0 +1,518 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.JWLibraryRedesign-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/sources",
+      "importPath" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BibleData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BrowsingHistoryEntry.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Highlight.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/JWDestination.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Note.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Playlist.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/TabItem.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/AutoDownloadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/MeetingMaterialsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Theme/AppTheme.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/ViewModels/TabManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/History/HistoryView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/DestinationCard.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/NewTabView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NoteEditorView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NotesView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PersonalStudyView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PlaylistsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/BibleScrubberView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/HighlightToolbar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Settings/SettingsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabBarView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabChip.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/WebEngine/WebReaderView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "JWLibraryRedesign",
+      "moduleOutputPath" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/Modules/JWLibraryRedesign.swiftmodule",
+      "objects" : [
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/App.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleData.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BrowsingHistoryEntry.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Highlight.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/JWDestination.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Note.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Playlist.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabItem.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AutoDownloadService.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/MeetingMaterialsService.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AppTheme.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabManager.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/ContentView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HistoryView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/DestinationCard.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NewTabView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NoteEditorView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NotesView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PersonalStudyView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PlaylistsView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleScrubberView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HighlightToolbar.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/SettingsView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabBarView.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabChip.swift.o",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/WebReaderView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "JWLibraryRedesign_main",
+        "-swift-version",
+        "6",
+        "-Xfrontend",
+        "-experimental-lazy-typecheck",
+        "-Xfrontend",
+        "-experimental-skip-all-function-bodies",
+        "-Xfrontend",
+        "-experimental-allow-module-with-compiler-errors",
+        "-Xfrontend",
+        "-empty-abi-descriptor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "jwlibraryredesign"
+      ],
+      "outputFileMapPath" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/Modules/JWLibraryRedesign.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : true,
+      "sources" : [
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/App.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BibleData.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BrowsingHistoryEntry.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Highlight.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/JWDestination.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Note.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Playlist.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/TabItem.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/AutoDownloadService.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/MeetingMaterialsService.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Theme/AppTheme.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/ViewModels/TabManager.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/ContentView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/History/HistoryView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/DestinationCard.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/NewTabView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NoteEditorView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NotesView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PersonalStudyView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PlaylistsView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/BibleScrubberView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/HighlightToolbar.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Settings/SettingsView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabBarView.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabChip.swift",
+        "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/WebEngine/WebReaderView.swift"
+      ],
+      "tempsPath" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "JWLibraryRedesign" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "JWLibraryRedesign",
+      "-package-name",
+      "jwlibraryredesign",
+      "-c",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/App.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BibleData.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BrowsingHistoryEntry.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Highlight.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/JWDestination.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Note.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Playlist.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/TabItem.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/AutoDownloadService.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/MeetingMaterialsService.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Theme/AppTheme.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/ViewModels/TabManager.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/ContentView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/History/HistoryView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/DestinationCard.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/NewTabView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NoteEditorView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NotesView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PersonalStudyView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PlaylistsView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/BibleScrubberView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/HighlightToolbar.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Settings/SettingsView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabBarView.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabChip.swift",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/WebEngine/WebReaderView.swift",
+      "-I",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx26.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "JWLibraryRedesign_main",
+      "-swift-version",
+      "6",
+      "-Xfrontend",
+      "-experimental-lazy-typecheck",
+      "-Xfrontend",
+      "-experimental-skip-all-function-bodies",
+      "-Xfrontend",
+      "-experimental-allow-module-with-compiler-errors",
+      "-Xfrontend",
+      "-empty-abi-descriptor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "jwlibraryredesign",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "JWLibraryRedesign" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/App.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BibleData.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BrowsingHistoryEntry.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Highlight.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/JWDestination.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Note.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Playlist.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/TabItem.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/AutoDownloadService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/MeetingMaterialsService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Theme/AppTheme.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/ViewModels/TabManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/History/HistoryView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/DestinationCard.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/NewTabView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NoteEditorView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NotesView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PersonalStudyView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PlaylistsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/BibleScrubberView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/HighlightToolbar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Settings/SettingsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabBarView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabChip.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/WebEngine/WebReaderView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/JWLibraryRedesign.build/sources"
+    },
+    "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

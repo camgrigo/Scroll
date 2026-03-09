@@ -1,0 +1,187 @@
+{
+  "": {
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/master.swiftdeps"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/App.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/App.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/App.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/App~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/App.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/App.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BibleData.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleData.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleData.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleData~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleData.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleData.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/BrowsingHistoryEntry.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BrowsingHistoryEntry.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BrowsingHistoryEntry.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BrowsingHistoryEntry~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BrowsingHistoryEntry.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BrowsingHistoryEntry.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Highlight.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Highlight.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Highlight.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Highlight~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Highlight.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Highlight.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/JWDestination.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/JWDestination.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/JWDestination.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/JWDestination~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/JWDestination.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/JWDestination.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Note.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Note.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Note.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Note~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Note.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Note.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/Playlist.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Playlist.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Playlist.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Playlist~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Playlist.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/Playlist.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Models/TabItem.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabItem.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabItem.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabItem~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabItem.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabItem.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/AutoDownloadService.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AutoDownloadService.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AutoDownloadService.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AutoDownloadService~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AutoDownloadService.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AutoDownloadService.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Services/MeetingMaterialsService.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/MeetingMaterialsService.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/MeetingMaterialsService.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/MeetingMaterialsService~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/MeetingMaterialsService.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/MeetingMaterialsService.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Theme/AppTheme.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AppTheme.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AppTheme.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AppTheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AppTheme.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/AppTheme.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/ViewModels/TabManager.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabManager.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabManager.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabManager.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabManager.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/ContentView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/ContentView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/ContentView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/ContentView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/History/HistoryView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HistoryView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HistoryView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HistoryView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HistoryView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HistoryView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/DestinationCard.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/DestinationCard.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/DestinationCard.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/DestinationCard~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/DestinationCard.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/DestinationCard.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/NewTab/NewTabView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NewTabView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NewTabView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NewTabView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NewTabView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NewTabView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NoteEditorView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NoteEditorView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NoteEditorView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NoteEditorView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NoteEditorView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NoteEditorView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/NotesView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NotesView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NotesView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NotesView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NotesView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/NotesView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PersonalStudyView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PersonalStudyView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PersonalStudyView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PersonalStudyView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PersonalStudyView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PersonalStudyView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/PersonalStudy/PlaylistsView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PlaylistsView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PlaylistsView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PlaylistsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PlaylistsView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/PlaylistsView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/BibleScrubberView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleScrubberView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleScrubberView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleScrubberView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleScrubberView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/BibleScrubberView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Reader/HighlightToolbar.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HighlightToolbar.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HighlightToolbar.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HighlightToolbar~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HighlightToolbar.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/HighlightToolbar.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/Settings/SettingsView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/SettingsView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/SettingsView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/SettingsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/SettingsView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/SettingsView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabBarView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabBarView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabBarView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabBarView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabBarView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabBarView.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/Views/TabBar/TabChip.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabChip.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabChip.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabChip~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabChip.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/TabChip.dia"
+  },
+  "/Users/camgrigo/Desktop/JWLibraryRedesign/Sources/JWLibraryRedesign/WebEngine/WebReaderView.swift": {
+    "dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/WebReaderView.d",
+    "object": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/WebReaderView.swift.o",
+    "swiftmodule": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/WebReaderView~partial.swiftmodule",
+    "swift-dependencies": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/WebReaderView.swiftdeps",
+    "diagnostics": "/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign.build/WebReaderView.dia"
+  }
+}
