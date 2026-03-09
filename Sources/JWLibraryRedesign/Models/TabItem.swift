@@ -16,9 +16,10 @@ final class TabItem: Identifiable {
     var lastAccessedAt: Date
 
     // Runtime-only (not persisted)
-    var canGoBack: Bool    = false
+    var canGoBack:    Bool = false
     var canGoForward: Bool = false
-    var isLoading: Bool    = false
+    var isLoading:    Bool = false
+    var isReaderMode: Bool = false
 
     // MARK: Init
     init(

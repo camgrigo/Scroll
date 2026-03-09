@@ -15,6 +15,7 @@ struct JWLibraryApp: App {
         Playlist.self,
         PlaylistItem.self,
         BrowsingHistoryEntry.self,
+        OfflinePage.self,
     ])
 
     private static let modelConfig = ModelConfiguration(
@@ -59,9 +60,10 @@ struct JWLibraryApp: App {
                 .environmentObject(tabManager)
                 .environment(tabManager)
                 .modelContainer(modelContainer)
-                .frame(minWidth: 1100, minHeight: 750)
+                .frame(minWidth: 900, minHeight: 600)
         }
         .defaultSize(width: 1280, height: 800)
+        .windowResizability(.contentMinSize)
         .commands {
             CommandGroup(replacing: .newItem) {
                 Button("New Tab") {

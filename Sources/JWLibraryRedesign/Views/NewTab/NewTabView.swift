@@ -33,9 +33,13 @@ struct NewTabView: View {
                 .padding(.horizontal)
                 .padding(.top, 8)
 
-                // MARK: Destination grid
+                // MARK: Daily Text banner (full-width, live content)
+                DailyTextBannerCard()
+                    .padding(.horizontal)
+
+                // MARK: Destination grid (all except Daily Text — it has its own banner)
                 LazyVGrid(columns: adaptiveColumns, spacing: 14) {
-                    ForEach(JWDestination.allCases) { dest in
+                    ForEach(JWDestination.allCases.filter { $0 != .dailyText }) { dest in
                         DestinationCard(destination: dest) {
                             tabManager.navigateActiveTab(to: dest.url, title: dest.title)
                         }
