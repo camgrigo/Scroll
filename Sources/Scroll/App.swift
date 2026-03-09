@@ -4,7 +4,7 @@ import SwiftData
 // MARK: - App entry point
 
 @main
-struct JWLibraryApp: App {
+struct ScrollApp: App {
 
     @StateObject private var tabManager = TabManager()
 
@@ -55,7 +55,7 @@ struct JWLibraryApp: App {
     // MARK: - macOS scene
 
     private var macScene: some Scene {
-        WindowGroup(id: "main") {
+        WindowGroup("Scroll", id: "main") {
             ContentView()
                 .environmentObject(tabManager)
                 .environment(tabManager)

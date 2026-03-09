@@ -37,25 +37,37 @@ private let textSelectionScript = """
 
 struct WebReaderView: View {
     let tab: TabItem
+    let webViewStore: WebViewStore
+
+    @Environment(\.modelContext) private var modelContext
 
     @State private var showHighlightToolbar = false
     @State private var selectedText: String = ""
-    @State private var webViewStore = WebViewStore()
 
     var body: some View {
         ZStack(alignment: .bottom) {
 #if os(iOS)
-            IOSWebView(tab: tab, store: webViewStore) { text in
-                selectedText = text
-                showHighlightToolbar = !text.isEmpty
-            }
+            IOSWebView(
+                tab: tab,
+                store: webViewStore,
+                onTextSelected: { text in
+                    selectedText = text
+                    showHighlightToolbar = !text.isEmpty
+                },
+                onPageLoaded: { reapplyHighlights() }
+            )
 #else
-            MacWebView(tab: tab, store: webViewStore) { text in
-                selectedText = text
-                showHighlightToolbar = !text.isEmpty
-            }
+            MacWebView(
+                tab: tab,
+                store: webViewStore,
+                onTextSelected: { text in
+                    selectedText = text
+                    showHighlightToolbar = !text.isEmpty
+                },
+                onPageLoaded: { reapplyHighlights() }
+            )
 #endif
-            // Invisible listener for back/forward notifications
+            // Listener for back/forward notifications
             Color.clear
                 .onReceive(NotificationCenter.default.publisher(for: .webViewGoBack)) { notif in
                     if let id = notif.object as? UUID, id == tab.id {
@@ -83,10 +95,82 @@ struct WebReaderView: View {
                 .padding(.bottom, 16)
             }
         }
+        .onChange(of: tab.isReaderMode) { _, enabled in
+            handleReaderModeChange(enabled)
+        }
+        .onChange(of: tab.currentURL) { _, _ in
+            // Leaving a page resets reader mode
+            if tab.isReaderMode { tab.isReaderMode = false }
+        }
+    }
+
+    // MARK: - Highlight re-application
+
+    private func reapplyHighlights() {
+        guard let urlStr = tab.currentURL?.absoluteString else { return }
+        let desc = FetchDescriptor<Highlight>(
+            predicate: #Predicate { $0.publicationURL == urlStr }
+        )
+        guard let highlights = try? modelContext.fetch(desc), !highlights.isEmpty else { return }
+
+        let colorMap: [String: String] = [
+            "yellow": "#FFE082CC", "orange": "#FFAB40CC", "pink":   "#F48FB1CC",
+            "blue":   "#81D4FACC", "purple": "#CE93D8CC", "green":  "#A5D6A7CC"
+        ]
+        for h in highlights {
+            let color = colorMap[h.colorName] ?? "#FFE082CC"
+            let escaped = h.selectedText
+                .replacingOccurrences(of: "\\", with: "\\\\")
+                .replacingOccurrences(of: "'",  with: "\\'")
+                .replacingOccurrences(of: "\n", with: "\\n")
+            let js = """
+            (function(){
+                var t='\(escaped)',c='\(color)';
+                var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n;
+                while(n=w.nextNode()){
+                    var i=n.textContent.indexOf(t);
+                    if(i>=0&&n.parentNode.className!=='jw-highlight'){
+                        var r=document.createRange();
+                        r.setStart(n,i);r.setEnd(n,i+t.length);
+                        var s=document.createElement('span');
+                        s.style.backgroundColor=c;s.style.borderRadius='2px';
+                        s.className='jw-highlight';
+                        try{r.surroundContents(s);}catch(e){}break;
+                    }
+                }
+            })();
+            """
+            webViewStore.evaluateJavaScript(js, for: tab.id)
+        }
+    }
+
+    // MARK: - Reader mode
+
+    private func handleReaderModeChange(_ enabled: Bool) {
+        guard let wv = webViewStore.webViews[tab.id] else { return }
+        if enabled {
+            wv.evaluateJavaScript(ReaderModeService.extractionJS) { result, _ in
+                guard let jsonStr = result as? String,
+                      let data    = jsonStr.data(using: .utf8),
+                      let obj     = try? JSONSerialization.jsonObject(with: data) as? [String: String],
+                      let content = obj["content"]
+                else {
+                    DispatchQueue.main.async { self.tab.isReaderMode = false }
+                    return
+                }
+                let title = obj["title"] ?? self.tab.title
+                let html  = ReaderModeService.readerHTML(title: title, content: content)
+                DispatchQueue.main.async { wv.loadHTMLString(html, baseURL: wv.url) }
+            }
+        } else {
+            if let url = tab.currentURL {
+                wv.load(URLRequest(url: url))
+            }
+        }
     }
 }
 
-// MARK: - Shared web view store
+// MARK: - Shared web-view store
 
 @Observable
 final class WebViewStore {
@@ -110,6 +194,7 @@ final class WebViewStore {
 final class WebCoordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     let tab: TabItem
     var onTextSelected: (String) -> Void
+    var onPageLoaded: (() -> Void)?
 
     init(tab: TabItem, onTextSelected: @escaping (String) -> Void) {
         self.tab = tab
@@ -125,10 +210,11 @@ final class WebCoordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandl
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         tab.isLoading    = false
         tab.title        = webView.title ?? tab.title
-        tab.currentURL   = webView.url ?? tab.currentURL
+        tab.currentURL   = webView.url  ?? tab.currentURL
         tab.canGoBack    = webView.canGoBack
         tab.canGoForward = webView.canGoForward
         tab.lastAccessedAt = Date()
+        DispatchQueue.main.async { self.onPageLoaded?() }
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
@@ -166,7 +252,6 @@ private func makeWebConfig(coordinator: WebCoordinator) -> WKWebViewConfiguratio
     config.allowsInlineMediaPlayback = true
     config.mediaTypesRequiringUserActionForPlayback = []
 #endif
-
     let script = WKUserScript(
         source: textSelectionScript,
         injectionTime: .atDocumentEnd,
@@ -185,17 +270,18 @@ struct IOSWebView: UIViewControllerRepresentable {
     let tab: TabItem
     let store: WebViewStore
     var onTextSelected: (String) -> Void
+    var onPageLoaded: (() -> Void)?
 
     func makeCoordinator() -> WebCoordinator {
         WebCoordinator(tab: tab, onTextSelected: onTextSelected)
     }
 
     func makeUIViewController(context: Context) -> WebContainerViewController {
-        let vc = WebContainerViewController(store: store, coordinator: context.coordinator)
-        return vc
+        WebContainerViewController(store: store, coordinator: context.coordinator)
     }
 
     func updateUIViewController(_ vc: WebContainerViewController, context: Context) {
+        context.coordinator.onPageLoaded = onPageLoaded
         vc.switchToTab(tab, coordinator: context.coordinator)
     }
 }
@@ -215,8 +301,6 @@ final class WebContainerViewController: UIViewController {
 
     func switchToTab(_ tab: TabItem, coordinator: WebCoordinator) {
         self.coordinator = coordinator
-
-        // Hide all existing webviews
         store.webViews.values.forEach { $0.isHidden = true }
 
         let config = makeWebConfig(coordinator: coordinator)
@@ -255,6 +339,7 @@ struct MacWebView: NSViewRepresentable {
     let tab: TabItem
     let store: WebViewStore
     var onTextSelected: (String) -> Void
+    var onPageLoaded: (() -> Void)?
 
     func makeCoordinator() -> WebCoordinator {
         WebCoordinator(tab: tab, onTextSelected: onTextSelected)
@@ -265,6 +350,7 @@ struct MacWebView: NSViewRepresentable {
         let wv = WKWebView(frame: .zero, configuration: config)
         wv.allowsBackForwardNavigationGestures = true
         wv.navigationDelegate = context.coordinator
+        context.coordinator.onPageLoaded = onPageLoaded
         store.webViews[tab.id] = wv
         if let url = tab.currentURL {
             wv.load(URLRequest(url: url))
@@ -273,6 +359,7 @@ struct MacWebView: NSViewRepresentable {
     }
 
     func updateNSView(_ wv: WKWebView, context: Context) {
+        context.coordinator.onPageLoaded = onPageLoaded
         wv.navigationDelegate = context.coordinator
         if let url = tab.currentURL, wv.url != url {
             wv.load(URLRequest(url: url))

@@ -2,12 +2,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "JWLibraryRedesign",
+    name: "Scroll",
     platforms: [.iOS(.v26), .macOS(.v26)],
     targets: [
         .executableTarget(
-            name: "JWLibraryRedesign",
-            path: "Sources/JWLibraryRedesign"
+            name: "Scroll",
+            path: "Sources/Scroll"
         )
     ]
 )
