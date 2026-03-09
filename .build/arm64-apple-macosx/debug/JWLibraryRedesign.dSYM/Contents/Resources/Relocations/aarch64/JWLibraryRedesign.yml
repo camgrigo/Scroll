@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/camgrigo/Desktop/JWLibraryRedesign/.build/arm64-apple-macosx/debug/JWLibraryRedesign'
-relocations:     []
-...
