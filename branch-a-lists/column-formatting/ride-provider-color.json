@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "style": {
+    "display": "flex",
+    "align-items": "center",
+    "justify-content": "flex-start"
+  },
+  "children": [
+    {
+      "elmType": "span",
+      "style": {
+        "padding": "2px 10px",
+        "border-radius": "12px",
+        "font-weight": "600",
+        "color": "#ffffff",
+        "background-color": "=if(@currentField == 'FACT', '#9E480E', if(@currentField == 'Lyft', '#7030A0', '#9AA0A6'))"
+      },
+      "txtContent": "@currentField"
+    }
+  ]
+}

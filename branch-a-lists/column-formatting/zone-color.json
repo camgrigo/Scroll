@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "txtContent": "@currentField",
+  "style": {
+    "padding-left": "8px",
+    "padding-right": "8px",
+    "border-radius": "12px",
+    "font-weight": "600",
+    "text-align": "center",
+    "color": "#ffffff",
+    "background-color": "=if(@currentField == 'N', '#2E5496', if(@currentField == 'E', '#548235', if(@currentField == 'S', '#BF8F00', if(@currentField == 'W', '#9E480E', '#808080'))))"
+  }
+}

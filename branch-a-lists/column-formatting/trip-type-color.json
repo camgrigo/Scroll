@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "txtContent": "@currentField",
+  "style": {
+    "padding": "2px 8px",
+    "border-radius": "12px",
+    "text-align": "center",
+    "font-weight": "600",
+    "color": "=if(@currentField == 'Round trip', '#1F3864', if(@currentField == 'Pickup only', '#548235', '#9E480E'))",
+    "background-color": "=if(@currentField == 'Round trip', '#D9E1F2', if(@currentField == 'Pickup only', '#E2EFDA', '#FCE4D6'))"
+  }
+}
