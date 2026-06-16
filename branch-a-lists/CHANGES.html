@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ride Scheduler — Branch A (Microsoft Lists) — Change Summary</title>
+<style>
+  :root{
+    --navy:#1F3864; --blue:#2E5496; --light:#D9E1F2;
+    --input:#FFF2CC; --gen:#E2EFDA; --flag:#FCE4D6; --grey:#6b7280;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       margin:0;color:#1f2937;background:#f3f4f6;line-height:1.5}
+  header{background:var(--navy);color:#fff;padding:24px 32px}
+  header h1{margin:0 0 4px;font-size:22px}
+  header .sub{opacity:.85;font-size:14px}
+  .wrap{max-width:900px;margin:0 auto;padding:24px 32px 64px}
+  .status{display:inline-block;padding:3px 10px;border-radius:999px;
+          font-size:12px;font-weight:600;margin-left:8px;vertical-align:middle}
+  .status.progress{background:#fef3c7;color:#92400e}
+  .status.done{background:#dcfce7;color:#166534}
+  h2{color:var(--navy);font-size:17px;margin:28px 0 8px;
+     border-bottom:2px solid var(--light);padding-bottom:4px}
+  .updated{color:var(--grey);font-size:13px;margin-top:4px}
+  table{border-collapse:collapse;width:100%;margin:8px 0;font-size:14px;background:#fff}
+  th,td{border:1px solid #e5e7eb;padding:7px 10px;text-align:left;vertical-align:top}
+  th{background:var(--blue);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafafa}
+  .pill{display:inline-block;padding:1px 8px;border-radius:4px;font-size:12px;font-weight:600}
+  .new{background:var(--gen);color:#166534}
+  .chg{background:var(--input);color:#92400e}
+  ul{margin:8px 0;padding-left:22px}
+  li{margin:4px 0}
+  code{background:#eef2ff;padding:1px 5px;border-radius:4px;font-size:13px}
+  .note{background:#fff;border-left:4px solid var(--blue);padding:10px 14px;margin:10px 0;font-size:14px}
+  .privacy{border-left-color:#dc2626;background:#fef2f2}
+  .legend span{display:inline-block;margin-right:14px;font-size:13px}
+  .sw{display:inline-block;width:12px;height:12px;border-radius:3px;
+      vertical-align:middle;margin-right:4px;border:1px solid #0002}
+  footer{color:var(--grey);font-size:12px;margin-top:32px;border-top:1px solid #e5e7eb;padding-top:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Ride Scheduler — Branch A (Microsoft 365 / Lists)</h1>
+  <div class="sub">Park Avenue Community Center · Senior Nutrition + Transportation · weekly route scheduling</div>
+</header>
+
+<div class="wrap">
+  <p>
+    <strong>Status:</strong>
+    <span class="status progress" id="statusBadge">Build in progress</span>
+  </p>
+  <p class="updated">Last updated: 2026-06-16 01:33 UTC</p>
+
+  <div class="note privacy">
+    <strong>Privacy rule (unchanged):</strong> rider names, addresses, and phone
+    numbers stay inside the Microsoft 365 / org data boundary. The only AI allowed
+    on rider data is <strong>Microsoft Copilot</strong>. Never paste rider PII into
+    any outside AI tool.
+  </div>
+
+  <h2>What this approach is</h2>
+  <p>
+    A Microsoft 365–native version of the weekly scheduler built on
+    <strong>Microsoft Lists</strong> (instead of raw Excel cells). You get a
+    calendar-style editing surface, dropdown forms, color-coded views, and an
+    Outlook email flow — all inside the tools the team already uses.
+  </p>
+
+  <h2>Confirmed decisions folded in</h2>
+  <table>
+    <tr><th>Area</th><th>Decision</th></tr>
+    <tr><td>FACT / Lyft riders</td><td>Simple <strong>Yes/No flag</strong> only. Handled by the FACT coordinator, <em>excluded</em> from driver van-run emails, shown in their own "FACT / Lyft riders" view.</td></tr>
+    <tr><td>Notifications</td><td><strong>Per-driver Outlook email</strong> is the primary flow (Teams optional). Each driver gets only their own runs; FACT coordinator gets the flagged list; supervisor gets the full weekly summary.</td></tr>
+    <tr><td>Roles ("Assigned Driver")</td><td>Four choices: <strong>Driver 1, Driver 2, FACT Coordinator, Supervisor</strong> (placeholder names).</td></tr>
+  </table>
+
+  <h2>Files in <code>branch-a-lists/</code></h2>
+  <table id="filesTable">
+    <tr><th>File</th><th>State</th><th>What it is</th></tr>
+    <tr><td><code>LIST-SCHEMA.md</code></td><td><span class="pill new">added</span></td><td>Column-by-column definition of the Microsoft List (types, choices, dropdowns).</td></tr>
+    <tr><td><code>Schedule for Lists Import.xlsx</code></td><td><span class="pill new">added</span></td><td>Starter table you import to create the List with the right columns + sample rows.</td></tr>
+    <tr><td><code>build_import_workbook.py</code></td><td><span class="pill new">added</span></td><td>Script that generates the import workbook.</td></tr>
+    <tr><td><code>column-formatting/</code></td><td><span class="pill new">added</span></td><td>JSON to color-code Zone, Trip Type, and Ride Provider columns in the List.</td></tr>
+    <tr><td><code>views.md</code></td><td><span class="pill new">added</span></td><td>Saved views: Calendar, grouped by Day→Zone→Time, per-driver, FACT/Lyft, heads-up call list.</td></tr>
+    <tr><td><code>power-automate-flow.md</code></td><td><span class="pill new">added</span></td><td>Step-by-step Power Automate flow for the per-driver Outlook emails.</td></tr>
+    <tr><td><code>email-template.md</code></td><td><span class="pill new">added</span></td><td>Outlook email body templates (driver run, FACT list, supervisor summary).</td></tr>
+    <tr><td><code>teams-template.md</code></td><td><span class="pill new">added</span></td><td>Optional Teams message version.</td></tr>
+  </table>
+
+  <h2>Color legend (Lists views)</h2>
+  <p class="legend">
+    <span><span class="sw" style="background:var(--input)"></span>You type here</span>
+    <span><span class="sw" style="background:var(--gen)"></span>Auto-generated</span>
+    <span><span class="sw" style="background:var(--flag)"></span>Heads-up: unusual time</span>
+  </p>
+
+  <h2>Still to do</h2>
+  <ul id="todo">
+    <li>Reconcile the 3 confirmed decisions above into every artifact (agent is finishing).</li>
+    <li>Add <code>SETUP-GUIDE.md</code> for Branch A.</li>
+    <li>Re-validate <code>Schedule for Lists Import.xlsx</code>, commit, and push.</li>
+    <li>Separate/later: the route-optimization gap (not solved in this branch).</li>
+  </ul>
+
+  <footer>
+    This page is a living summary — it updates as the build completes, so the chat
+    stays short. The older Excel-only version lives in <code>ride-scheduler/</code>.
+  </footer>
+</div>
+</body>
+</html>
