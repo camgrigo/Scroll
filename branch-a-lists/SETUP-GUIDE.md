@@ -13,6 +13,11 @@ and a **Power Automate** flow emails each driver their runs automatically.
 > The earlier Excel tool in `../ride-scheduler/` still works and is **not**
 > being deleted. Branch A (this folder) is the agreed next step.
 
+> **Two ways to do this setup:** by hand following this guide, or with
+> **Claude Cowork** driving the clicks for you (`COWORK-SETUP.md`). Either way,
+> **you** enter the real riders yourself in M365 — Cowork only builds the
+> structure, so no rider PII leaves the Microsoft boundary.
+
 ---
 
 ## What's in this folder
