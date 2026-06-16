@@ -1,4 +1,9 @@
-# Teams template — schedule-change post
+# Teams template — schedule-change post (OPTIONAL)
+
+> **Optional add-on.** The team asked for **per-driver Outlook email** as the
+> primary notification (see `power-automate-flow.md` / `email-template.md`).
+> Teams posting is demoted to a nice-to-have. Use this only if you also want a
+> channel post; skip it otherwise.
 
 When a ride is **added or changed**, the flow can post a message to a Teams
 channel (e.g., a "Senior Transportation" channel) so the team sees updates
@@ -23,7 +28,7 @@ Action: **Microsoft Teams → Post message in a chat or channel**
 🚐 Ride updated
 Rider: [[Rider]]  •  Day: [[Day]]  •  Zone: [[Zone]]
 Pickup: [[Pickup Time]] at [[Pickup Address]]
-Driver: [[Assigned Driver]]  •  Provider: [[Ride Provider]]
+Driver: [[Assigned Driver]]  •  Outside ride: [[Outside Ride (FACT/Lyft)]]
 Notes: [[Notes]]
 ```
 
@@ -56,7 +61,7 @@ Paste this JSON into the **Message** (Adaptive Card) box and replace the
         { "title": "Zone",     "value": "[[Zone]]" },
         { "title": "Return",   "value": "[[Return Time]]" },
         { "title": "Driver",   "value": "[[Assigned Driver]]" },
-        { "title": "Provider", "value": "[[Ride Provider]]" }
+        { "title": "Outside ride", "value": "[[Outside Ride (FACT/Lyft)]]" }
       ]
     }
   ]

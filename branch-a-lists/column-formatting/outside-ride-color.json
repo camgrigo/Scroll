@@ -14,9 +14,9 @@
         "border-radius": "12px",
         "font-weight": "600",
         "color": "#ffffff",
-        "background-color": "=if(@currentField == 'FACT', '#9E480E', if(@currentField == 'Lyft', '#7030A0', '#9AA0A6'))"
+        "background-color": "=if(@currentField == true, '#9E480E', '#9AA0A6')"
       },
-      "txtContent": "@currentField"
+      "txtContent": "=if(@currentField == true, 'FACT / Lyft', 'Van')"
     }
   ]
 }

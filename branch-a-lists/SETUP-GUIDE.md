@@ -24,7 +24,7 @@ and a **Power Automate** flow emails each driver their runs automatically.
 | `Schedule for Lists Import.xlsx` | The clean Excel you import to create the list. |
 | `build_import_workbook.py` | The script that builds that .xlsx (you can ignore it). |
 | `views.md` | How to build the Calendar, By Driver, By Day, and FACT/Lyft views. |
-| `column-formatting/` | Color JSON for Zone, Ride Provider, Trip Type columns. |
+| `column-formatting/` | Color JSON for Zone, Outside Ride (FACT/Lyft), Trip Type columns. |
 | `power-automate-flow.md` | The auto-email / Teams-post flow, step by step. |
 | `email-template.md` | The driver email wording. |
 | `teams-template.md` | The Teams post / adaptive card. |
@@ -54,17 +54,20 @@ Do these in order. Each links to the detailed file.
    importing the Excel file." This gives you a list called **Senior Rides
    Schedule** with 10 sample rows and the right column types. *(Step A + B)*
 
-2. **Fix any column types Lists guessed wrong**, especially turn **Assigned
-   Driver** into a real **Person** column (or keep it a Choice of driver names —
-   `LIST-SCHEMA.md` explains both). *(Step B)*
+2. **Fix any column types Lists guessed wrong** — make **Assigned Driver** a
+   **Choice** of the four roles (Driver 1, Driver 2, FACT Coordinator,
+   Supervisor) and **Outside Ride (FACT/Lyft)** a **Yes/No** column.
+   `LIST-SCHEMA.md` walks through both. *(Step B)*
 
 3. **Apply the colors.** In `views.md` → "Apply the colors", paste the three JSON
-   files so Zone, Ride Provider, and Trip Type show colored pills.
+   files so Zone, Outside Ride (FACT/Lyft), and Trip Type show colored pills.
 
 4. **Build the four views** — Calendar, By Driver, By Day, FACT/Lyft — following
    `views.md`. *(Steps D + G)*
 
-5. **Build the Power Automate flow** following `power-automate-flow.md`, then run
+5. **Build the Power Automate flow** following `power-automate-flow.md` — the
+   weekly per-driver email flow. Set the **role → email map** at the top
+   (Driver 1, Driver 2, FACT Coordinator, Supervisor → real addresses), then run
    one test. *(Step E)*
 
 6. **Delete the 10 sample rows** and add your real riders (use the form — next
@@ -82,9 +85,11 @@ Do these in order. Each links to the detailed file.
 
 2. **Add each ride with the form (step C — the big error-reducer):**
    - Click **+ New** (top-left of the list). A **form** opens — one field at a
-     time, with dropdowns for Day, Zone, Trip Type, and Ride Provider, a
-     people-picker for Assigned Driver, and a clock for the times.
-   - Fill it in, click **Save**. Repeat for each rider/day.
+     time, with dropdowns for Day, Zone, Trip Type, and Assigned Driver (the
+     four roles), a Yes/No toggle for Outside Ride (FACT/Lyft), and a clock for
+     the times.
+   - Fill it in, click **Save**. Repeat for each rider/day. For a FACT/Lyft
+     rider, set **Outside Ride = Yes** and **Assigned Driver = FACT Coordinator**.
    - Because the form uses dropdowns and required fields, you can't fat-finger a
      zone or forget the driver — that's the point.
 
@@ -94,12 +99,13 @@ Do these in order. Each links to the detailed file.
 4. **Run a quick Copilot conflict check** (optional) — paste a prompt from
    `copilot-prompts.md` §3 to flag obvious double-bookings. Confirm by eye.
 
-5. **The flow emails the drivers automatically** when you add/change rides (or on
-   your weekly schedule, depending on which design you built). No more
-   print-and-hand-out.
+5. **The weekly flow emails everyone their own slice** — Driver 1 and Driver 2
+   each get only their van runs, the FACT Coordinator gets the FACT/Lyft list,
+   and the Supervisor gets the full summary. No more print-and-hand-out.
 
-6. **FACT / Lyft riders:** check the **FACT / Lyft riders** view so you don't
-   forget to confirm those outside bookings.
+6. **FACT / Lyft riders:** check the **FACT / Lyft riders** view (Outside Ride =
+   Yes) so the coordinator confirms those outside bookings. They're kept out of
+   the drivers' van-run emails on purpose.
 
 ---
 
@@ -120,9 +126,8 @@ Do these in order. Each links to the detailed file.
 | 🔵 Blue | Zone **N** / Round trip |
 | 🟢 Green | Zone **E** / Pickup only |
 | 🟡 Gold | Zone **S** |
-| 🟠 Orange | Zone **W** / Return only / **FACT** ride |
-| 🟣 Purple | **Lyft** ride |
-| ⚪ Grey | Ride Provider **None** (your own vans) |
+| 🟠 Orange | Zone **W** / Return only / **Outside Ride = Yes (FACT/Lyft)** |
+| ⚪ Grey | **Outside Ride = No** (your own vans) |
 
 ---
 
@@ -138,26 +143,30 @@ check* — you make the final routing call by eye, exactly as you do today.
 
 ---
 
-## Assumptions (being confirmed with you in parallel)
+## What's confirmed (your answers, baked in)
 
-These are reasonable guesses baked into the sample data and docs. Tell me if any
-are wrong and I'll adjust:
+These reflect the decisions you confirmed — they're built into the sample data,
+the schema, the views, and the flow:
 
-1. **~10 riders, weekdays Mon–Fri**, all going to/from the **Park Avenue
+1. ✅ **Team = 4 roles:** **Driver 1, Driver 2, FACT Coordinator, Supervisor**.
+   "Assigned Driver" is a **Choice** of these roles (placeholder names); the flow
+   maps each role to a real email address. No dependency on personal M365
+   accounts.
+2. ✅ **FACT/Lyft = a simple Yes/No flag** (**Outside Ride (FACT/Lyft)**). "Yes"
+   riders are handled by the **FACT Coordinator**, **excluded** from the van
+   drivers' emails, and shown in their own **FACT / Lyft riders** view.
+3. ✅ **Notifications = per-driver Outlook email** (the primary flow). Each driver
+   gets only their own van runs; the FACT Coordinator gets the FACT/Lyft list;
+   the Supervisor gets the full weekly summary. **Teams posting is optional.**
+
+Still reasonable defaults you can change any time:
+
+4. **~10 riders, weekdays Mon–Fri**, all going to/from the **Park Avenue
    Community Center** for lunch.
-2. **A small number of drivers** (the sample uses two: Robert Nguyen, Maria
-   Lopez). The flow assumes the **Assigned Driver** can become a **Person**
-   column — i.e., drivers have M365 accounts. If they don't, we use a **Choice**
-   list of driver names + a name→email map in the flow.
-3. **FACT and Lyft** are two outside ride providers; a rider's row is flagged via
-   the **Ride Provider** Choice column (None / FACT / Lyft) and these riders show
-   in their own filtered view but stay in the same list.
-4. **"Round trip"** is the normal case; "Pickup only" / "Return only" exist for
+5. **"Round trip"** is the normal case; "Pickup only" / "Return only" exist for
    one-directional days. Adjust the choices if your trip patterns differ.
-5. Times are entered as real Date-and-time values so the **calendar** and the
+6. Times are entered as real Date-and-time values so the **calendar** and the
    **flow** work. The sample uses one placeholder Monday; you'll enter real dates.
-6. Schedule changes don't need to track *exactly which field* changed — emailing
-   on any save (or via a "Notify driver?" toggle) is acceptable at this size.
 
 ---
 

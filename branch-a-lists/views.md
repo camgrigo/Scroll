@@ -53,11 +53,14 @@ date/time is what places each ride on the calendar).
 3. **Group by** = **Assigned Driver**.
 4. **Sort within group** by **Day**, then **Pickup Time** (ascending).
 5. Show columns in this order: Rider, Pickup Address, Day, Pickup Time,
-   Return Time, Zone, Ride Provider, Notes.
-6. **Save**.
+   Return Time, Zone, Notes.
+6. **Filter:** **Outside Ride (FACT/Lyft)** **is equal to** **No** — so this
+   view shows only van runs (the FACT/Lyft riders have their own view below).
+7. **Save**.
 
-Now each driver's name is a collapsible header with all their runs underneath —
-this is what the Power Automate flow mirrors when it emails each driver.
+Now each driver role (Driver 1, Driver 2) is a collapsible header with all their
+van runs underneath — this is what the Power Automate flow mirrors when it emails
+each driver their own runs.
 
 ---
 
@@ -70,7 +73,7 @@ this is what the Power Automate flow mirrors when it emails each driver.
    close riders sit together in time order — an easy starting point for
    routing, same idea as the old Excel tool).
 4. Show columns: Rider, Zone, Pickup Time, Trip Type, Pickup Address,
-   Assigned Driver, Return Time, Ride Provider, Notes.
+   Assigned Driver, Return Time, Outside Ride (FACT/Lyft), Notes.
 5. **Save**.
 
 > **Tip:** Day is text (Mon..Fri), so it groups in alphabetical order
@@ -82,18 +85,17 @@ this is what the Power Automate flow mirrors when it emails each driver.
 
 ## (d) "FACT / Lyft riders" filtered view (step G)
 
-Keeps outside-provider riders in the **same list**, just shown on their own tab.
+Keeps the outside-provider riders in the **same list**, just shown on their own
+tab — this is the list the **FACT Coordinator** works from.
 
 1. View dropdown → **Create new view** → name **FACT / Lyft riders** →
    type **List** → **Create**.
-2. **Filter:** show items where **Ride Provider** **is not equal to** **None**.
-   *(This shows both FACT and Lyft. To split them, make two views filtered to
-   `Ride Provider = FACT` and `Ride Provider = Lyft`.)*
-3. **Group by** = **Ride Provider** (so FACT and Lyft are separated).
-4. **Sort** by **Day**, then **Pickup Time**.
-5. Show columns: Rider, Ride Provider, Day, Pickup Time, Pickup Address,
-   Return Time, Notes.
-6. **Save**.
+2. **Filter:** show items where **Outside Ride (FACT/Lyft)** **is equal to**
+   **Yes**.
+3. **Sort** by **Day**, then **Pickup Time**.
+4. Show columns: Rider, Day, Pickup Time, Pickup Address, Return Time,
+   Assigned Driver, Notes. *(Put the provider — FACT vs. Lyft — in **Notes**.)*
+5. **Save**.
 
 ---
 
@@ -109,7 +111,7 @@ These make the list scannable at a glance. Apply each once:
 | Column | JSON file | What you'll see |
 |---|---|---|
 | **Zone** | `column-formatting/zone-color.json` | N = blue, E = green, S = gold, W = orange pills |
-| **Ride Provider** | `column-formatting/ride-provider-color.json` | FACT = orange, Lyft = purple, None = grey |
+| **Outside Ride (FACT/Lyft)** | `column-formatting/outside-ride-color.json` | Yes = orange "FACT / Lyft" pill, No = grey "Van" pill |
 | **Trip Type** | `column-formatting/trip-type-color.json` | Round trip = blue, Pickup only = green, Return only = orange |
 
 Colors apply across **all** views automatically once set on the column.
@@ -123,6 +125,5 @@ Colors apply across **all** views automatically once set on the column.
 | 🔵 Blue | Zone **N** / Round trip |
 | 🟢 Green | Zone **E** / Pickup only |
 | 🟡 Gold | Zone **S** |
-| 🟠 Orange | Zone **W** / Return only / **FACT** |
-| 🟣 Purple | **Lyft** |
-| ⚪ Grey | Ride Provider **None** (your own vans) |
+| 🟠 Orange | Zone **W** / Return only / **Outside Ride = Yes (FACT/Lyft)** |
+| ⚪ Grey | **Outside Ride = No** (your own vans) |

@@ -40,11 +40,12 @@ branch noted in the setup guide.
   Day, and within each day list how many riders, which zones, and which driver
   is assigned. Keep it to a short bulleted list."*
 
-- *"How many total rides are scheduled this week, and how many are van runs vs.
-  FACT vs. Lyft? Give me the counts only."*
+- *"How many total rides are scheduled this week, and how many are van runs
+  (Outside Ride = No) vs. outside FACT/Lyft rides (Outside Ride = Yes)? Give me
+  the counts only."*
 
-- *"List each driver and the number of runs assigned to them this week, sorted
-  from most to fewest."*
+- *"List each Assigned Driver role and the number of van runs assigned to them
+  this week, sorted from most to fewest."*
 
 - *"Which days have the most rides? Tell me if any day looks unusually heavy
   compared to the others."*

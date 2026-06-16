@@ -50,9 +50,9 @@
 <div class="wrap">
   <p>
     <strong>Status:</strong>
-    <span class="status progress" id="statusBadge">Build in progress</span>
+    <span class="status done" id="statusBadge">Built &amp; reconciled — pushed</span>
   </p>
-  <p class="updated">Last updated: 2026-06-16 01:33 UTC</p>
+  <p class="updated">Last updated: 2026-06-16 · your 3 confirmed answers folded in</p>
 
   <div class="note privacy">
     <strong>Privacy rule (unchanged):</strong> rider names, addresses, and phone
@@ -72,9 +72,9 @@
   <h2>Confirmed decisions folded in</h2>
   <table>
     <tr><th>Area</th><th>Decision</th></tr>
-    <tr><td>FACT / Lyft riders</td><td>Simple <strong>Yes/No flag</strong> only. Handled by the FACT coordinator, <em>excluded</em> from driver van-run emails, shown in their own "FACT / Lyft riders" view.</td></tr>
-    <tr><td>Notifications</td><td><strong>Per-driver Outlook email</strong> is the primary flow (Teams optional). Each driver gets only their own runs; FACT coordinator gets the flagged list; supervisor gets the full weekly summary.</td></tr>
-    <tr><td>Roles ("Assigned Driver")</td><td>Four choices: <strong>Driver 1, Driver 2, FACT Coordinator, Supervisor</strong> (placeholder names).</td></tr>
+    <tr><td>FACT / Lyft riders</td><td>Simple <strong>Yes/No flag</strong> (column <code>Outside Ride (FACT/Lyft)</code>). "Yes" riders are handled by the FACT Coordinator, <em>excluded</em> from driver van-run emails, shown in their own "FACT / Lyft riders" view. <em>(Replaced the agent's 3-way None/FACT/Lyft choice.)</em></td></tr>
+    <tr><td>Notifications</td><td><strong>Per-driver Outlook email</strong> is the primary flow (Teams demoted to optional). Driver 1 &amp; Driver 2 each get only their own van runs; FACT Coordinator gets the flagged list; Supervisor gets the full weekly summary. <em>(Replaced per-item-on-save as primary.)</em></td></tr>
+    <tr><td>Roles ("Assigned Driver")</td><td><strong>Choice</strong> of four roles: Driver 1, Driver 2, FACT Coordinator, Supervisor (placeholder names); flow maps each role → email. <em>(Replaced the agent's Person column / real names.)</em></td></tr>
   </table>
 
   <h2>Files in <code>branch-a-lists/</code></h2>
@@ -83,26 +83,31 @@
     <tr><td><code>LIST-SCHEMA.md</code></td><td><span class="pill new">added</span></td><td>Column-by-column definition of the Microsoft List (types, choices, dropdowns).</td></tr>
     <tr><td><code>Schedule for Lists Import.xlsx</code></td><td><span class="pill new">added</span></td><td>Starter table you import to create the List with the right columns + sample rows.</td></tr>
     <tr><td><code>build_import_workbook.py</code></td><td><span class="pill new">added</span></td><td>Script that generates the import workbook.</td></tr>
-    <tr><td><code>column-formatting/</code></td><td><span class="pill new">added</span></td><td>JSON to color-code Zone, Trip Type, and Ride Provider columns in the List.</td></tr>
+    <tr><td><code>column-formatting/</code></td><td><span class="pill chg">updated</span></td><td>Color JSON for Zone, Trip Type, and the new <code>Outside Ride (FACT/Lyft)</code> Yes/No column (orange = FACT/Lyft, grey = Van).</td></tr>
     <tr><td><code>views.md</code></td><td><span class="pill new">added</span></td><td>Saved views: Calendar, grouped by Day→Zone→Time, per-driver, FACT/Lyft, heads-up call list.</td></tr>
-    <tr><td><code>power-automate-flow.md</code></td><td><span class="pill new">added</span></td><td>Step-by-step Power Automate flow for the per-driver Outlook emails.</td></tr>
-    <tr><td><code>email-template.md</code></td><td><span class="pill new">added</span></td><td>Outlook email body templates (driver run, FACT list, supervisor summary).</td></tr>
-    <tr><td><code>teams-template.md</code></td><td><span class="pill new">added</span></td><td>Optional Teams message version.</td></tr>
+    <tr><td><code>power-automate-flow.md</code></td><td><span class="pill chg">updated</span></td><td>Weekly per-driver Outlook flow w/ role→email map: Driver 1, Driver 2, FACT Coordinator, Supervisor each get their own slice.</td></tr>
+    <tr><td><code>email-template.md</code></td><td><span class="pill chg">updated</span></td><td>Four bodies: driver digest, FACT/Lyft list, supervisor summary, optional mid-week change alert.</td></tr>
+    <tr><td><code>teams-template.md</code></td><td><span class="pill chg">updated</span></td><td>Marked optional (email is primary); tokens updated to the Yes/No flag.</td></tr>
+    <tr><td><code>copilot-prompts.md</code></td><td><span class="pill new">added</span></td><td>In-boundary Copilot prompts (summaries, notices, conflict-spotting); not a route optimizer.</td></tr>
+    <tr><td><code>SETUP-GUIDE.md</code></td><td><span class="pill new">added</span></td><td>Plain-English A–G walkthrough, weekly routine, confirmed decisions, privacy, known gap.</td></tr>
   </table>
 
-  <h2>Color legend (Lists views)</h2>
-  <p class="legend">
-    <span><span class="sw" style="background:var(--input)"></span>You type here</span>
-    <span><span class="sw" style="background:var(--gen)"></span>Auto-generated</span>
-    <span><span class="sw" style="background:var(--flag)"></span>Heads-up: unusual time</span>
-  </p>
+  <h2>List columns (final)</h2>
+  <p>Rider · Pickup Address · Day · Zone · Trip Type · Pickup Time · Destination ·
+  Return Time · <strong>Assigned Driver</strong> (Choice: 4 roles) ·
+  <strong>Outside Ride (FACT/Lyft)</strong> (Yes/No) · Notes.</p>
 
-  <h2>Still to do</h2>
+  <h2>Done</h2>
   <ul id="todo">
-    <li>Reconcile the 3 confirmed decisions above into every artifact (agent is finishing).</li>
-    <li>Add <code>SETUP-GUIDE.md</code> for Branch A.</li>
-    <li>Re-validate <code>Schedule for Lists Import.xlsx</code>, commit, and push.</li>
-    <li>Separate/later: the route-optimization gap (not solved in this branch).</li>
+    <li>✅ All 3 confirmed decisions folded into schema, sample data, views, flow, emails, Teams, Copilot, and setup guide.</li>
+    <li>✅ <code>Schedule for Lists Import.xlsx</code> regenerated &amp; re-validated (11 cols, 10 rows, datetime times, table intact).</li>
+    <li>✅ Color JSON renamed/rewritten for the Yes/No flag; all 3 JSON files parse.</li>
+    <li>✅ Committed &amp; pushed to <code>claude/ai-workflow-work-rf1gg2</code>.</li>
+  </ul>
+
+  <h2>Separate / later</h2>
+  <ul>
+    <li>True route-optimization (best pickup order / van assignment) — M365 doesn't do this cleanly; it's its own branch (would need Azure Maps or a routing tool vetted for the data boundary). By-Day view's Zone→Time grouping gives a hand-finishable start.</li>
   </ul>
 
   <footer>

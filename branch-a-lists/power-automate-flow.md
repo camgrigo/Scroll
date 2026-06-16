@@ -1,106 +1,116 @@
-# Power Automate flow — auto-email drivers & post to Teams (step E)
+# Power Automate flow — per-driver Outlook emails (step E)
 
-**Goal:** replace "print the schedule and email/hand it out" with an automatic
-flow. When you add or change a ride in the **Senior Rides Schedule** list, the
-flow emails the **assigned driver** their run and (optionally) posts a note to a
-Teams channel so the schedule change is visible.
+**Goal:** replace "print the schedule and hand it out" with one weekly flow that
+emails **each person only what they need**:
 
-**Stays in the boundary:** Power Automate, Lists/SharePoint, Outlook, and Teams
-are all Microsoft 365. No rider data leaves your tenant. **No outside AI is
-involved in this flow.**
+| Recipient (role) | Gets |
+|---|---|
+| **Driver 1** | Only Driver 1's own van runs for the week |
+| **Driver 2** | Only Driver 2's own van runs for the week |
+| **FACT Coordinator** | The full **FACT / Lyft** list (the outside-provider riders) |
+| **Supervisor** | The full weekly summary (every ride) |
 
-**Connector cost:** everything below uses **standard** connectors
-(SharePoint/Lists, Office 365 Outlook, Microsoft Teams). **No premium license is
-required.** The one thing that needs care is the **Person** column — see the
-"Driver email" note.
+The two drivers never get the FACT/Lyft riders, and the FACT Coordinator handles
+those separately — exactly the split the team uses today.
 
----
+**Stays in the boundary:** Power Automate, Lists/SharePoint, and Outlook are all
+Microsoft 365. No rider data leaves your tenant. **No outside AI is involved.**
 
-## Two designs — pick one
-
-| Design | What it does | Best when |
-|---|---|---|
-| **1. Per-item** *(recommended to start)* | Fires on each ride created/changed; emails that one driver about that one ride; optional Teams post. | Simple, immediate, easy to build. |
-| **2. Weekly digest** | A scheduled flow once a week gathers each driver's runs into one email. | You'd rather drivers get ONE email, not many. |
-
-Start with **Design 1**. Design 2 is sketched at the bottom.
+**Connector cost:** everything uses **standard** connectors (SharePoint/Lists,
+Office 365 Outlook). **No premium license required.**
 
 ---
 
-## Design 1 — Per-item flow (step by step)
+## Before you build: the role → email map
+
+"Assigned Driver" is a **Choice** of four roles (placeholder names), not real
+accounts — so the flow needs to know each role's real email address. You set this
+once, at the top of the flow, with an **Initialize variable** (type **Object**):
+
+```
+roleEmails  =
+{
+  "Driver 1":         "driver1@yourorg.org",
+  "Driver 2":         "driver2@yourorg.org",
+  "FACT Coordinator": "factcoord@yourorg.org",
+  "Supervisor":       "supervisor@yourorg.org"
+}
+```
+
+To get one address in a later step, use:
+`variables('roleEmails')?['Driver 1']` (or build the key from a list field).
+Keep this map current and you never touch the rest of the flow when people change.
+
+---
+
+## Primary design — weekly per-driver digest (build this one)
+
+A single scheduled flow that sends the four emails above. Steps:
 
 ### Trigger
-- **SharePoint → When an item is created or modified**
-- **Site Address:** the site that holds your list
-- **List Name:** **Senior Rides Schedule**
+- **Recurrence** — e.g. every **Friday 3:00 PM** (for the coming week), or
+  **Monday 6:00 AM**. Pick the time you'd normally hand out the schedule.
 
-> "Created or modified" fires on every save. The condition below stops it from
-> spamming on trivial edits.
+### Step 0 — Initialize the role→email map
+- **Initialize variable** → Name `roleEmails`, Type **Object**, Value = the JSON
+  block above.
 
-### Step 1 — Get the driver's email
-Because **Assigned Driver** is a **Person** column, the trigger already gives you
-the driver's email as dynamic content: **`Assigned Driver Email`**. Use that
-directly — no lookup needed.
+### Step 1 — Get the week's rides
+- **SharePoint → Get items**
+  - **Site Address:** the site holding your list
+  - **List Name:** **Senior Rides Schedule**
+  - *(Optional **Filter Query** to limit to the coming week once you enter real
+    dates, e.g. `PickupTime ge '2026-06-15'`.)*
 
-> **If you kept Assigned Driver as a Choice (text) instead of Person:** add a
-> **Switch** (or a small mapping) that turns each driver *name* into an email
-> address, e.g. Robert Nguyen → rnguyen@yourorg.org. Then use that variable as
-> the "To" address. (Document the name→email map in one place so it's easy to
-> update.)
+### Step 2 — Email each van driver their own runs
+Do this **once for Driver 1** and **once for Driver 2** (two parallel branches,
+identical except the role name):
 
-### Step 2 — Condition: only act on real changes
-Add a **Condition** so the flow only continues when it matters. Two common
-guards (use either or both):
+1. **Filter array** on the Get items output:
+   - `Assigned Driver Value` **is equal to** `Driver 1`, **and**
+   - `Outside Ride (FACT/Lyft) Value` **is equal to** `No`
+2. **Create HTML table** from the filtered array — columns: Day, Pickup Time,
+   Rider, Pickup Address, Zone, Return Time, Notes.
+3. **Office 365 Outlook → Send an email (V2)**
+   - **To:** `variables('roleEmails')?['Driver 1']`
+   - **Subject / Body:** the **driver digest** body in `email-template.md`,
+     with the HTML table dropped in.
 
-- **There is an assigned driver:**
-  `Assigned Driver Email` **is not equal to** *(empty)*
-- **It's a van run, not an outside provider** *(optional — see FACT/Lyft note):*
-  `Ride Provider` **is equal to** `None`
+> Because Step 1 of the filter is the role name and Step 2 excludes
+> `Outside Ride = Yes`, each driver gets **only their own van runs** and never
+> the FACT/Lyft riders.
 
-> **About "only when status/time changes":** the standard SharePoint trigger
-> doesn't natively tell you *which* field changed. Practical options:
-> 1. Keep it simple — email on any create/modify of an assigned, van ride
->    (fine for ~10 riders).
-> 2. Add a **"Notify driver?" Yes/No column** you tick when you want the email
->    to go out — condition on that, then have the flow untick it. This gives you
->    a manual "send now" switch and avoids accidental re-sends.
-> 3. (Advanced) Store a copy of key fields and compare — more work than it's
->    worth at this size.
+### Step 3 — Email the FACT Coordinator the outside-provider list
+1. **Filter array:** `Outside Ride (FACT/Lyft) Value` **is equal to** `Yes`.
+2. **Create HTML table** — columns: Day, Pickup Time, Rider, Pickup Address,
+   Return Time, Notes (note says FACT or Lyft).
+3. **Send an email (V2)**
+   - **To:** `variables('roleEmails')?['FACT Coordinator']`
+   - **Body:** the **FACT/Lyft list** body in `email-template.md`.
 
-### Step 3 — Send the email
-- **Office 365 Outlook → Send an email (V2)**
-- **To:** `Assigned Driver Email`
-- **Subject / Body:** from **`email-template.md`** (single-ride version), with the
-  list dynamic-content tokens dropped in:
-  - Rider, Day, Pickup Time, Pickup Address, Zone, Destination, Return Time,
-    Trip Type, Ride Provider, Notes, and `Assigned Driver DisplayName`.
-
-> **FACT / Lyft branch (step G):** if you did NOT filter them out in Step 2, add
-> an **If Ride Provider is FACT or Lyft** branch that sends an *awareness-only*
-> note ("this rider goes by [provider], no van run needed") instead of a
-> drive-this-run email.
-
-### Step 4 (optional) — Post to Teams on changes
-- **Microsoft Teams → Post message in a chat or channel** *(standard connector)*
-- Team/Channel: your **Senior Transportation** channel
-- Message/Card: from **`teams-template.md`** (text or adaptive card).
+### Step 4 — Email the Supervisor the full weekly summary
+1. **Create HTML table** from the **full** Get items output (no filter) —
+   columns: Day, Pickup Time, Rider, Zone, Assigned Driver, Outside Ride, Notes.
+2. **Send an email (V2)**
+   - **To:** `variables('roleEmails')?['Supervisor']`
+   - **Body:** the **supervisor summary** body in `email-template.md`.
 
 ### Save & test
-1. Click **Save**.
-2. Click **Test → Manually → run**, then edit a row in the list (e.g., change a
-   pickup time) and save. Confirm the email arrives and the Teams post appears.
-3. Watch the **flow run history** for any failures (usually a missing field or a
-   driver with no email).
+1. **Save** → **Test → Manually → run**.
+2. Confirm four emails arrive: Driver 1 (their runs only), Driver 2 (their runs
+   only), FACT Coordinator (FACT/Lyft list), Supervisor (everything).
+3. Check **flow run history** for any failures (usually a wrong address in the
+   role map or an empty filter).
 
 ---
 
 ## Dynamic-content cheat sheet (list field → token)
 
-| Email/Teams placeholder | List dynamic content token |
+| Placeholder | List dynamic content token |
 |---|---|
 | Rider | **Rider** (or **Title** if you didn't rename it) |
-| Driver's email (To) | **Assigned Driver Email** |
-| Driver's name | **Assigned Driver DisplayName** |
+| Assigned role | **Assigned Driver Value** |
+| Outside-ride flag | **Outside Ride (FACT/Lyft) Value** (`Yes`/`No`) |
 | Day | **Day Value** |
 | Zone | **Zone Value** |
 | Trip type | **Trip Type Value** |
@@ -108,43 +118,46 @@ guards (use either or both):
 | Return time | **Return Time** |
 | Pickup address | **Pickup Address** |
 | Destination | **Destination** |
-| Ride provider | **Ride Provider Value** |
 | Notes | **Notes** |
 
-> Choice columns often expose a **`… Value`** token — that's the plain text of
-> the choice. Person columns expose **`… Email`** and **`… DisplayName`**.
+> Choice columns expose a **`… Value`** token — the plain text of the choice.
+> A Yes/No column returns `true`/`false` in conditions but shows as `Yes`/`No`.
 
 ---
 
-## Design 2 — Weekly digest (sketch)
+## Optional add-on — mid-week change alert
 
-If you prefer one email per driver per week:
+If you change a ride mid-week and want the affected driver to know right away,
+add a **second, separate** flow:
 
-1. **Trigger:** **Recurrence** — e.g., every **Friday 3:00 PM** (for the next
-   week) or **Monday 6:00 AM**.
-2. **Get items** from **Senior Rides Schedule** (optionally filter to the
-   coming week).
-3. Build the unique **list of drivers** (an **Apply to each** over the items,
-   collecting distinct `Assigned Driver Email`).
-4. For each driver: **Filter array** the items to that driver, **Create HTML
-   table** of their runs (Day, Pickup Time, Rider, Pickup Address, Zone, Return
-   Time, Notes), and **Send an email (V2)** using the *digest* body in
+1. **Trigger:** **SharePoint → When an item is created or modified**, List =
+   **Senior Rides Schedule**.
+2. **Condition:** `Outside Ride (FACT/Lyft) Value` **is equal to** `No`
+   *(skip outside-provider rows — those go to the FACT Coordinator)*.
+3. **Get the email:** `variables('roleEmails')?[ <Assigned Driver Value> ]`
+   (initialize the same role map at the top).
+4. **Send an email (V2)** to that driver using the single-ride body in
    `email-template.md`.
-5. Optional: one **Teams** summary post for the week.
 
-> Design 2 uses only standard connectors too. It's more steps to build but
-> sends fewer emails. Build Design 1 first; graduate to this if drivers ask for
-> a single weekly email.
+> The standard SharePoint trigger can't tell you *which* field changed, so this
+> fires on any save of a van row. Add a **"Notify driver?" Yes/No column** you
+> tick when you want the alert, then have the flow untick it, if accidental
+> re-sends bother you.
+
+---
+
+## Optional — Teams post
+
+Posting to a Teams channel is **demoted to optional** (the team asked for email).
+If you still want a channel post on changes, `teams-template.md` has a standard
+**Microsoft Teams → Post message in a chat or channel** action you can add as an
+extra step. No premium license needed.
 
 ---
 
 ## Honest caveats
 
-- The standard SharePoint trigger can't tell you *exactly which field* changed —
-  use the "Notify driver?" toggle (Step 2) if accidental re-sends bother you.
-- If a driver has **no M365 account / no email on file**, the email step will
-  fail for that row — that's the case for the Choice-column path; keep the
-  name→email map current.
-- This flow does **not** plan or optimize routes — it only delivers the
-  schedule you built. Route optimization is the separate branch noted in the
-  setup guide.
+- Keep the **role → email map** current — a wrong address is the most common
+  failure.
+- This flow **delivers** the schedule you built; it does **not** plan or optimize
+  routes. Route optimization is the separate branch noted in the setup guide.

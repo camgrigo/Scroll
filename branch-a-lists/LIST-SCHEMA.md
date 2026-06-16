@@ -24,9 +24,15 @@ bottom).
 | 6 | **Pickup Time** | Date and time | Show **time** (date shown too is fine) | No | (none) |
 | 7 | **Destination** | Single line of text | (free text — usually "Park Avenue Community Center") | No | Park Avenue Community Center |
 | 8 | **Return Time** | Date and time | Show **time** | No | (none) |
-| 9 | **Assigned Driver** | **Person or Group** | (pick from your org's people) | No | (none) |
-| 10 | **Ride Provider** | Choice | None, FACT, Lyft | Yes | None |
+| 9 | **Assigned Driver** | Choice | Driver 1, Driver 2, FACT Coordinator, Supervisor | Yes | (none) |
+| 10 | **Outside Ride (FACT/Lyft)** | **Yes/No** | (Yes = goes by FACT or Lyft) | Yes | No |
 | 11 | **Notes** | Multiple lines of text (plain) | (free text — mobility, one-offs) | No | (none) |
+
+> **Roles, not personal accounts:** "Assigned Driver" is a **Choice** of four
+> roles with placeholder names — **Driver 1, Driver 2, FACT Coordinator,
+> Supervisor**. The flow maps each role to a real email address (see
+> `power-automate-flow.md`). Rename the placeholders to your real people's role
+> labels any time; just keep the choice list and the flow's map in sync.
 
 > **"Title" column:** Every new SharePoint/Lists list starts with a built-in
 > column called **Title**. The cleanest approach is to **rename Title → Rider**
@@ -37,19 +43,20 @@ bottom).
 
 ## Why each type was chosen (plain English)
 
-- **Choice** (Day, Zone, Trip Type, Ride Provider) gives you a fixed dropdown.
+- **Choice** (Day, Zone, Trip Type, Assigned Driver) gives you a fixed dropdown.
   No typos, and it powers the colored views and the grouped views. This is a
   big error-reducer versus typing free text.
 - **Date and time** (Pickup Time, Return Time) lets Lists drive the **Calendar
   view** and lets Power Automate compare times. If these came in as plain text,
   the calendar and the flow would not work.
-- **Person or Group** (Assigned Driver) links to a *real* person in your
-  organization. That's what lets the flow email "the assigned driver"
-  automatically — Lists already knows their email.
-- **Ride Provider** is the **FACT/Lyft flag** (step G). Using a 3-way Choice
-  (None / FACT / Lyft) is better than a Yes/No because you have two outside
-  providers, not one. If you only ever use one, a **Yes/No** column named
-  "Outside ride?" would also be valid — pick one and stay consistent.
+- **Assigned Driver** is a **Choice** of four roles (Driver 1, Driver 2, FACT
+  Coordinator, Supervisor). The flow maps each role to a real email address, so
+  you don't depend on every driver having an M365 account.
+- **Outside Ride (FACT/Lyft)** is the **simple FACT/Lyft flag** (step G). It's a
+  **Yes/No** column: **Yes** = the rider goes by an outside provider (FACT or
+  Lyft) and is handled by the **FACT Coordinator**, *excluded* from the van
+  drivers' emails and shown in their own FACT/Lyft view. **No** = a normal van
+  run.
 
 ---
 
@@ -85,31 +92,33 @@ If you didn't catch a wrong type in the preview, fix it after the list exists:
 
 Specific fixes you will likely need:
 
-### A. Turn **Assigned Driver** into a Person column
-Excel import cannot create a Person column (Excel has no link to your org's
-people), so it will come in as **text**. To get the real benefit (auto-email
-the driver), replace it:
-1. Note the driver names already in the text column.
-2. **+ Add column → Person** → name it **Assigned Driver (Person)** →
-   allow selecting **People only**, single selection → **Save**.
-3. For each row, open the item and pick the real driver account.
-4. Once filled, delete the old text column, then rename the new one to
-   **Assigned Driver**.
+### A. Make **Assigned Driver** a Choice of the four roles
+Excel import brings this in as **text**. Convert it to a **Choice** so it's a
+clean dropdown:
+1. Column header → **Column settings → Edit** → change **Type** to **Choice**.
+2. Set the choices to exactly: **Driver 1**, **Driver 2**, **FACT Coordinator**,
+   **Supervisor** (rename to your real role labels if you like).
+3. Turn **Require that this column contains information** = **Yes**.
 
-> **Simpler alternative if your drivers don't all have M365 accounts:** keep
-> **Assigned Driver** as a **Choice** column listing your drivers' names
-> (e.g., Robert Nguyen, Maria Lopez). The flow can still email them if you map
-> each name to an email address inside the flow. The setup guide explains both
-> paths; pick one.
+> These are **roles, not personal accounts** — you don't need every driver to
+> have an M365 account. The flow maps each role to a real email address
+> (`power-automate-flow.md`). Keep the choice list and the flow's map in sync.
 
-### B. Confirm the Choice columns
-For **Day, Zone, Trip Type, Ride Provider**: open Edit and make sure the
-**Choices** list matches the table exactly (add any missing options, e.g. make
-sure **Ride Provider** has all of None / FACT / Lyft). Set the **Default value**
-shown in the table. Turn **Require that this column contains information** = Yes
-for the ones marked Required.
+### B. Make **Outside Ride (FACT/Lyft)** a Yes/No column
+Import may bring this in as text ("Yes"/"No"). Convert it:
+1. Column header → **Column settings → Edit** → change **Type** to **Yes/No**.
+2. Set **Default value** = **No**.
 
-### C. Confirm the Date columns
+A row set to **Yes** is handled by the FACT Coordinator, excluded from the van
+drivers' emails, and appears in the FACT/Lyft view.
+
+### C. Confirm the other Choice columns
+For **Day, Zone, Trip Type**: open Edit and make sure the **Choices** list
+matches the table exactly. Set the **Default value** shown in the table. Turn
+**Require that this column contains information** = Yes for the ones marked
+Required.
+
+### D. Confirm the Date columns
 For **Pickup Time** and **Return Time**: Edit → Type = **Date and Time** →
 under "Show", choose to display the **time**. (Showing the date too is fine.)
 
@@ -125,7 +134,7 @@ paste JSON → Save.**
 | Column | File | Effect |
 |---|---|---|
 | Zone | `column-formatting/zone-color.json` | N=blue, E=green, S=gold, W=orange pills |
-| Ride Provider | `column-formatting/ride-provider-color.json` | FACT=orange, Lyft=purple, None=grey |
+| Outside Ride (FACT/Lyft) | `column-formatting/outside-ride-color.json` | Yes=orange pill, No=grey |
 | Trip Type | `column-formatting/trip-type-color.json` | colored pill per trip type |
 
 See `views.md` for the full view setup and where these colors show up.

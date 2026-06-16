@@ -1,31 +1,104 @@
-# Email template — "Your rides this week"
+# Email templates — per-driver Outlook emails
 
-This is the body the Power Automate flow sends to each driver. Words in
+These are the bodies the **primary** Power Automate flow sends. Each recipient
+gets only what they need (see `power-automate-flow.md`). Words in
 **[[double brackets]]** are **dynamic content** you insert from the list inside
-the flow (Power Automate shows them as clickable tokens). Everything else is
-plain typed text.
+the flow; everything else is plain typed text.
 
-> Keep the email plain and short — drivers read it on a phone in the van.
-
----
-
-## Subject
-
-```
-Your rides — [[Day]] — Park Avenue Community Center
-```
-
-*(If you send a per-driver digest of the whole week instead of one ride at a
-time, use: `Your rides this week — Park Avenue Community Center`.)*
+> Keep emails plain and short — drivers read them on a phone in the van.
 
 ---
 
-## Body (single-ride version — fires on each created/changed item)
+## 1. Driver digest — "Your rides this week" (Driver 1 / Driver 2)
+
+One email per driver, listing **only their own van runs**.
+
+**Subject**
 
 ```
-Hi [[Assigned Driver — DisplayName]],
+Your rides this week — Park Avenue Community Center
+```
 
-Here is a ride on your list. Please confirm you can cover it.
+**Body**
+
+```
+Hi [[Driver 1 / Driver 2]],
+
+Here are your senior van rides for the coming week:
+
+[[HTML table of this driver's runs:
+   Day | Pickup Time | Rider | Pickup Address | Zone | Return Time | Notes ]]
+
+These are van runs only — FACT/Lyft riders are handled by the coordinator.
+If anything looks wrong, reply to this email or call the center.
+
+Thank you for driving!
+— Park Avenue Community Center, Senior Transportation
+```
+
+---
+
+## 2. FACT Coordinator — "FACT / Lyft riders this week"
+
+One email listing every rider flagged **Outside Ride = Yes**.
+
+**Subject**
+
+```
+FACT / Lyft riders this week — Park Avenue Community Center
+```
+
+**Body**
+
+```
+Hi [[FACT Coordinator]],
+
+Here are the riders going by an outside provider (FACT or Lyft) this week —
+please confirm their bookings:
+
+[[HTML table of Outside Ride = Yes rows:
+   Day | Pickup Time | Rider | Pickup Address | Return Time | Notes (FACT/Lyft) ]]
+
+These riders are not on a van run.
+— Park Avenue Community Center, Senior Transportation
+```
+
+---
+
+## 3. Supervisor — "Full weekly schedule"
+
+One email with every ride for oversight.
+
+**Subject**
+
+```
+Weekly senior rides summary — Park Avenue Community Center
+```
+
+**Body**
+
+```
+Hi [[Supervisor]],
+
+Here is the full senior rides schedule for the coming week:
+
+[[HTML table of ALL rows:
+   Day | Pickup Time | Rider | Zone | Assigned Driver | Outside Ride | Notes ]]
+
+— Park Avenue Community Center, Senior Transportation
+```
+
+---
+
+## 4. Single-ride body (optional mid-week change alert)
+
+Used by the optional second flow that fires when one van ride changes
+(see `power-automate-flow.md` → "mid-week change alert").
+
+```
+Hi [[Assigned Driver]],
+
+Heads up — this ride on your list changed. Please confirm you can cover it.
 
   Rider:        [[Rider]]
   Day:          [[Day]]
@@ -33,35 +106,8 @@ Here is a ride on your list. Please confirm you can cover it.
   Destination:  [[Destination]]
   Return:       [[Return Time]]
   Trip type:    [[Trip Type]]
-  Ride provider:[[Ride Provider]]
   Notes:        [[Notes]]
 
 If anything looks wrong, reply to this email or call the center.
-
-— Park Avenue Community Center, Senior Transportation
-```
-
-> **FACT / Lyft note:** if **Ride Provider** is **FACT** or **Lyft**, this ride
-> is NOT one you drive — it's booked with the outside provider. The flow can add
-> a line like: *"This rider is going by [[Ride Provider]] — no van run needed,
-> for your awareness only."* (See the condition in `power-automate-flow.md`.)
-
----
-
-## Body (weekly digest version — one email per driver, all their runs)
-
-Use this if you'd rather send each driver ONE email listing every run. It needs
-the "Get items + filter by driver + build an HTML table" steps in
-`power-automate-flow.md`.
-
-```
-Hi [[Driver name]],
-
-Here are your senior rides for the week of [[week start date]]:
-
-[[HTML table of this driver's runs:
-   Day | Pickup Time | Rider | Pickup Address | Zone | Return Time | Notes ]]
-
-Thank you for driving!
 — Park Avenue Community Center, Senior Transportation
 ```

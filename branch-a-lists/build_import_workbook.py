@@ -18,14 +18,19 @@ All data here is INVENTED sample data for Escondido, CA. Replace it with your
 real riders after the list is created. Rider names + zones are reused from the
 earlier ride-scheduler tool so the two tools line up.
 
-Note on "Person" columns
+Note on "Assigned Driver"
 -------------------------
-"Assigned Driver" is meant to become a *Person* column in Lists. Excel import
-cannot create a Person column directly (it has no link to your org directory),
-so we import the driver as plain text here and the SETUP/LIST-SCHEMA guides
-show how to either (a) add a real Person column in Lists afterward, or
-(b) keep it as a Choice column of driver names. The text we write here is just
-a first/last name that is easy to match to a real account later.
+"Assigned Driver" is a **Choice** column of four ROLES (placeholder names):
+Driver 1, Driver 2, FACT Coordinator, Supervisor. We import these as plain text
+so Lists infers a Choice column; the SETUP/LIST-SCHEMA guides show how to map
+each role to a real email address inside the Power Automate flow.
+
+Note on "Outside Ride (FACT/Lyft)"
+----------------------------------
+This is a simple **Yes/No** flag. "Yes" means the rider goes by an outside
+provider (FACT paratransit or a Lyft) and is handled by the FACT Coordinator —
+NOT one of the two van drivers. Those riders are excluded from the driver
+van-run emails and show on their own FACT/Lyft view.
 """
 
 from datetime import datetime, time
@@ -53,8 +58,8 @@ COLUMNS = [
     ("Pickup Time",      16, "datetime"),
     ("Destination",      26, "text"),
     ("Return Time",      16, "datetime"),
-    ("Assigned Driver",  18, "text"),
-    ("Ride Provider",    14, "choice"),   # None / FACT / Lyft  (the FACT/Lyft flag)
+    ("Assigned Driver",  18, "choice"),   # Driver 1 / Driver 2 / FACT Coordinator / Supervisor (roles)
+    ("Outside Ride (FACT/Lyft)", 18, "choice"),  # Yes / No  (the simple FACT/Lyft flag)
     ("Notes",            28, "text"),
 ]
 
@@ -73,18 +78,22 @@ def dt(hh, mm):
 # Riders/zones reused from ride-scheduler; addresses are plausible Escondido.
 # DEST: most go to the center; one shows a different destination.
 CENTER = "Park Avenue Community Center"
+# Assigned Driver is one of the four ROLES (placeholder names):
+#   "Driver 1", "Driver 2", "FACT Coordinator", "Supervisor".
+# Outside Ride (FACT/Lyft) is a simple "Yes"/"No" flag. The two outside-provider
+# riders are flagged "Yes" and assigned to the FACT Coordinator (not a van driver).
 ROWS = [
-    # Rider,           Pickup Address,          Day,   Zone, Trip,    Pickup,    Destination, Return,    Driver,    Provider, Notes
-    ("Dorothy Alvarez","412 N Ash St",          "Mon", "N", "Round trip", dt(10,30), CENTER, dt(12,45), "Robert Nguyen", "None", "Walker"),
-    ("Frank Bishop",   "905 E Mission Ave",     "Mon", "E", "Round trip", dt(10,45), CENTER, dt(13,0),  "Robert Nguyen", "None", ""),
-    ("Gloria Chen",    "233 S Juniper St",      "Mon", "S", "Round trip", dt(10,30), CENTER, dt(12,45), "Maria Lopez",   "None", "Low sodium"),
-    ("Harold Diaz",    "78 W 9th Ave",          "Tue", "W", "Round trip", dt(11,0),  CENTER, dt(13,0),  "Maria Lopez",   "None", "Cane"),
-    ("Irene Edwards",  "1521 N Broadway",       "Tue", "N", "Round trip", dt(10,30), CENTER, dt(12,45), "Robert Nguyen", "None", ""),
-    ("James Fletcher", "640 E Grand Ave",       "Wed", "E", "Round trip", dt(10,45), CENTER, dt(13,0),  "Maria Lopez",   "None", "Wheelchair lift"),
-    ("Karen Gomez",    "318 S Escondido Blvd",  "Wed", "S", "Round trip", dt(10,30), CENTER, dt(12,45), "Robert Nguyen", "None", ""),
-    ("Leonard Hayes",  "55 W Lincoln Ave",      "Thu", "W", "Round trip", dt(11,0),  CENTER, dt(13,0),  "Maria Lopez",   "FACT", "FACT paratransit booked"),
-    ("Marie Ingram",   "1208 N Centre City Pkwy","Thu","N", "Round trip", dt(10,30), CENTER, dt(12,45), "Robert Nguyen", "None", "Hard of hearing"),
-    ("Nathan Jones",   "402 E Valley Pkwy",     "Fri", "E", "Pickup only", dt(10,45), CENTER, None,      "Maria Lopez",   "Lyft", "Lyft home after lunch"),
+    # Rider,           Pickup Address,          Day,   Zone, Trip,    Pickup,    Destination, Return,    Driver,             Outside, Notes
+    ("Dorothy Alvarez","412 N Ash St",          "Mon", "N", "Round trip", dt(10,30), CENTER, dt(12,45), "Driver 1",         "No",  "Walker"),
+    ("Frank Bishop",   "905 E Mission Ave",     "Mon", "E", "Round trip", dt(10,45), CENTER, dt(13,0),  "Driver 1",         "No",  ""),
+    ("Gloria Chen",    "233 S Juniper St",      "Mon", "S", "Round trip", dt(10,30), CENTER, dt(12,45), "Driver 2",         "No",  "Low sodium"),
+    ("Harold Diaz",    "78 W 9th Ave",          "Tue", "W", "Round trip", dt(11,0),  CENTER, dt(13,0),  "Driver 2",         "No",  "Cane"),
+    ("Irene Edwards",  "1521 N Broadway",       "Tue", "N", "Round trip", dt(10,30), CENTER, dt(12,45), "Driver 1",         "No",  ""),
+    ("James Fletcher", "640 E Grand Ave",       "Wed", "E", "Round trip", dt(10,45), CENTER, dt(13,0),  "Driver 2",         "No",  "Wheelchair lift"),
+    ("Karen Gomez",    "318 S Escondido Blvd",  "Wed", "S", "Round trip", dt(10,30), CENTER, dt(12,45), "Driver 1",         "No",  ""),
+    ("Leonard Hayes",  "55 W Lincoln Ave",      "Thu", "W", "Round trip", dt(11,0),  CENTER, dt(13,0),  "FACT Coordinator", "Yes", "FACT paratransit booked"),
+    ("Marie Ingram",   "1208 N Centre City Pkwy","Thu","N", "Round trip", dt(10,30), CENTER, dt(12,45), "Driver 1",         "No",  "Hard of hearing"),
+    ("Nathan Jones",   "402 E Valley Pkwy",     "Fri", "E", "Pickup only", dt(10,45), CENTER, None,      "FACT Coordinator", "Yes", "Lyft home after lunch"),
 ]
 
 # ---- build workbook ------------------------------------------------------
